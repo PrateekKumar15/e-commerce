@@ -1,11 +1,13 @@
 
 import jwt from 'jsonwebtoken';
 import User from '../Models/user.model.js';
+
+
 export const protectRoute = async (req, res, next) => {
     
     try {
         const {accessToken} = req.cookies;
-        console.log("Access Token", accessToken);
+        // console.log("Access Token", accessToken);
         if(!accessToken){
             return res.status(401).json({message: "Unauthenticated - No access token provided"});
         }

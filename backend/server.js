@@ -7,6 +7,7 @@
 import { connectDB } from "./lib/db.js";
  dotenv.config(); // gives access to env values
 import cookieParser from "cookie-parser";
+import cartRoutes from "./routes/cart.route.js"
 
 
  console.log(process.env.PORT)
@@ -19,6 +20,7 @@ import cookieParser from "cookie-parser";
  app.use(cookieParser());
  app.use("/api/auth",authRoutes)
  app.use("/api/products",productRoutes)
+ app.use("/api/cart",cartRoutes)
 
  app.listen(PORT , ()=> {
     console.log("Server is running on port http://localhost:"+ PORT);
