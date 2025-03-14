@@ -1,4 +1,4 @@
-import Coupon from "../Models/coupon.modal.js"
+import Coupon from "../Models/coupon.model.js"
 export const getCoupon = async (req,res)=>{
     try {
         const coupon = await Coupon.findone({userId:req.user._id,isActive: true})

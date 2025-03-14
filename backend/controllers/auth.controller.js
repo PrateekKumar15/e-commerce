@@ -1,4 +1,4 @@
-import User from "../Models/user.model.js";
+// import User from "../Models/user.model.js";
 import jwt from "jsonwebtoken";
 import{redis} from "../lib/redis.js";
 
@@ -133,4 +133,13 @@ export const refreshToken = async (req,res) =>{
     }
 }
 // Todo: Create getProfile controller later
-// export const getProfile = async (req,res) =>{}
+export const getProfile = async (req,res) =>{
+    try {
+        res.json(req.user);
+        
+    } catch (error) {
+        console.log("Error in getProfile controller", error.message);
+        res.status(500).json({message: "Something went wrong",error:error.message});
+        
+    }
+}
