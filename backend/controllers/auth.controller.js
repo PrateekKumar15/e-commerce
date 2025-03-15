@@ -1,6 +1,7 @@
 // import User from "../Models/user.model.js";
 import jwt from "jsonwebtoken";
 import{redis} from "../lib/redis.js";
+import User from "../Models/user.model.js";
 
 const generateToken = (userId) => {
     const accessToken = jwt.sign({userId}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "15m"});
@@ -58,17 +59,20 @@ export const signup = async (req,res) =>{
     }, "message":"User Created Successfully"});
     }
     catch(error){
-        console.log(error);
-        res.status(400).json({
+        console.log("Error in signup controller", error.message);
+        res.status(500).json({
             message: "Something went wrong"
         });
     }
 }
-export const signin = async (req,res) =>{
+export const login = async (req,res) =>{
     try{
+        console.log("yes")
         const {email,password} = req.body;
+        console.log(email)
         const user = await User.findOne({email});
         if(user){
+            
             const isMatch = await user.comparePassword(password);
             if(isMatch){
                 const {accessToken,refreshToken} = generateToken(user._id);
@@ -81,11 +85,12 @@ export const signin = async (req,res) =>{
                     role: user.role
                 }, "message":"User Logged In Successfully"});
             }else{
-                console.log("Error in login controller", error.message);
+                
                 res.status(400).json({message: "Invalid Credentials"});
             }
         }
     }catch(error){
+        console.log("Error in login controller", error.message);
         res.status(500).json({message: "Something went wrong",error:error.message});
     }
 }
