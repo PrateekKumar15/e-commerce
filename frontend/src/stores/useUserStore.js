@@ -47,7 +47,7 @@ export const useUserStore = create((set, get) => ({
       toast.success(res.data.message);
     } catch (error) {
       set({ loading: false });
-      toast.error(error.response.data.message || "An error occured");
+      toast.error(error.message || "An error occured");
     }
   },
   checkAuth: async () => {
@@ -57,7 +57,7 @@ export const useUserStore = create((set, get) => ({
       set({ user: res.data, checkingAuth: false });
     } catch (error) {
       set({ checkingAuth: false , user: null});
-      console.log("Major error is here")
+      console.log(error.message)
     }
   },
 }));

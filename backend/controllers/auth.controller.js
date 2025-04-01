@@ -69,7 +69,7 @@ export const login = async (req,res) =>{
     try{
         console.log("yes")
         const {email,password} = req.body;
-        console.log(email)
+        // console.log(email)
         const user = await User.findOne({email});
         if(user){
             

@@ -9,6 +9,10 @@ import { useUserStore } from './stores/useUserStore.js'
 import { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import LoadingSpinner from './Components/LoadingSpinner.jsx'
+import AdminPage from './Pages/AdminPage.jsx'
+import CategoryPage from './Pages/CategoryPage.jsx'
+
+
 function App() {
  const {user, checkAuth, checkingAuth} = useUserStore();
  useEffect(() => {
@@ -35,6 +39,7 @@ checkAuth();
           <Route path="/signup" element={user ? <Navigate to="/" /> : <SignupPage />} />  
           <Route path="/login" element={user ? <Navigate to="/" />:<LoginPage/>} />
           <Route path="/secret-dashboard" element={user?.role === "admin" ? <AdminPage /> : <Navigate to="/" />} />
+          <Route path="/category/:category" element={< CategoryPage /> } />
         
       </Routes> 
       </div>
