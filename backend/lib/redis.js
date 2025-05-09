@@ -1,5 +1,12 @@
-import Redis from "ioredis"
-import dotenv from "dotenv"
+import { Redis } from "@upstash/redis";
+import dotenv from "dotenv";
+
 dotenv.config();
-export const redis = new Redis(process.env.UPSTASH_REDIS_URL);
-await redis.set('foo', 'bar');
+
+export const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
+
+// key-value store
+await redis.set("foo", "bar");
