@@ -21,7 +21,6 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "e-commerce": "file:",
     "express": "^4.21.1",
     "framer-motion": "^12.5.0",
     "ioredis": "^5.4.1",
