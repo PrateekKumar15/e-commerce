@@ -1,5 +1,5 @@
 import express from "express";
-import { adminRoute, protectRoute } from "../Middlewares/auth.middleware.js";
+import { adminRoute, protectRoute } from "../middleware/auth.middleware.js";
 import {
   getAnalyticsData,
   getDailySalesData,
@@ -9,8 +9,9 @@ const router = express.Router();
 
 router.get("/", protectRoute, adminRoute, async (req, res) => {
   try {
-    const analyticsData = await getAnalyticsData();
+    const analyticsData = await getAnalyticsData(); //this is a function for fetching the data not for chart uske upar wala text form me
 
+    //here we are plotting the graph for a week where the end date is today and startvdateis 7 days before the end date
     const endDate = new Date();
     const startDate = new Date(endDate.getTime() - 7 * 24 * 60 * 60 * 1000);
 
