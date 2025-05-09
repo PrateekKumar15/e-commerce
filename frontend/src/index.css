@@ -1,1 +1,13 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    /* Apply dark mode styles directly using the .dark class on html */
+  }
+  html.dark body {
+    @apply bg-dark-background text-dark-foreground;
+  }
+}
