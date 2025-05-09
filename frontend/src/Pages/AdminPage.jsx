@@ -1,11 +1,10 @@
-import { BarChart, PlusCircle, ShoppingBasket } from "lucide-react";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-
-// import AnalyticsTab from "../components/AnalyticsTab";
-import CreateProductForm from "../components/CreateProductForm";
-import ProductsList from "../Components/ProductsList";
-import { useProductStore } from "../stores/useProductStore";
+import { BarChart, PlusCircle, ShoppingBasket } from 'lucide-react';
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion';
+import CreateProductForm from '../components/CreateProductForm';
+import ProductsList from '../components/ProductsList';
+import AnalyticsTab from '../components/AnalyticsTab';
+import { useProductStore } from '../stores/useProductStore';
 
 const tabs = [
     { id: "create", label: "Create Product", icon: PlusCircle },
@@ -13,35 +12,33 @@ const tabs = [
     { id: "analytics", label: "Analytics", icon: BarChart },
 ];
 
-const AdminPage = () => {
+function AdminPage() {
     const [activeTab, setActiveTab] = useState("create");
     const { fetchAllProducts } = useProductStore();
 
-    //  This is a optimisation technique so that we don,t have to wait for products to be being fetched after moving to productList page and also avoid re-creating the function on every render.(by putting function inside the dependency array of useEffect)
     useEffect(() => {
         fetchAllProducts();
-    }, [fetchAllProducts]);
+    }, [fetchAllProducts])
+
+
 
     return (
         <div className='min-h-screen relative overflow-hidden'>
             <div className='relative z-10 container mx-auto px-4 py-16'>
-                <motion.h1
-                    className='text-4xl font-bold mb-8 text-emerald-400 text-center'
+                <motion.h1 className='text-4xl font-bold text-center text-primary mb-8'
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
                     Admin Dashboard
                 </motion.h1>
-
-                <div className='flex justify-center mb-8'>
+                <div className='flex justify-center flex-wrap mb-8 gap-2'>
                     {tabs.map((tab) => (
-                        <button
-                            key={tab.id}
+                        <button key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${activeTab === tab.id
-                                    ? "bg-emerald-600 text-white"
-                                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            className={` px-4 py-2 rounded-md flex items-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-background ${activeTab === tab.id
+                                ? 'bg-primary text-primary-foreground focus:ring-primary'
+                                : 'bg-border text-foreground/70 hover:bg-border/80 dark:bg-dark-border dark:text-dark-foreground/70 dark:hover:bg-dark-border-hover focus:ring-primary/50'
                                 }`}
                         >
                             <tab.icon className='mr-2 h-5 w-5' />
@@ -54,6 +51,8 @@ const AdminPage = () => {
                 {activeTab === "analytics" && <AnalyticsTab />}
             </div>
         </div>
-    );
-};
-export default AdminPage;
+    )
+
+}
+
+export default AdminPage
