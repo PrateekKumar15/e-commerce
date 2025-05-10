@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from "framer-motion"
-import axios from '../lib/axios';
+import axios from '../lib/axios.js';
 import { Users, Package, ShoppingCart, DollarSign } from 'lucide-react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "./LoadingSpinner.jsx";
 
 // Define colors that work reasonably well on both light/dark backgrounds for chart
 const chartAxisColor = '#9CA3AF'; // gray-400

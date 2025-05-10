@@ -1,21 +1,21 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar.jsx";
 import { Toaster } from "react-hot-toast";
-import { useUserStore } from "./stores/useUserStore";
-import { useCartStore } from "./stores/useCartStore";
+import { useUserStore } from "./stores/useUserStore.js";
+import { useCartStore } from "./stores/useCartStore.js";
 import { useEffect, lazy, Suspense } from "react"; // Import lazy and Suspense
-import LoadingSpinner from "./components/LoadingSpinner";
+import LoadingSpinner from "./components/LoadingSpinner.jsx";
 
 // Dynamically import pages
-const HomePage = lazy(() => import("./pages/HomePage"));
-const LoginPage = lazy(() => import("./pages/LoginPage"));
-const SignUpPage = lazy(() => import("./pages/SignUpPage"));
-const AdminPage = lazy(() => import("./pages/AdminPage"));
-const CategoryPage = lazy(() => import("./pages/CategoryPage"));
-const CartPage = lazy(() => import("./pages/CartPage"));
-const PurchaseSuccessPage = lazy(() => import("./pages/PurchaseSuccessPage"));
-const PurchaseCancelPage = lazy(() => import("./pages/PurchaseCancelPage"));
-const ProductsPage = lazy(() => import("./pages/ProductPage"));
+const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage.jsx"));
+const AdminPage = lazy(() => import("./pages/AdminPage.jsx"));
+const CategoryPage = lazy(() => import("./pages/CategoryPage.jsx"));
+const CartPage = lazy(() => import("./pages/CartPage.jsx"));
+const PurchaseSuccessPage = lazy(() => import("./pages/PurchaseSuccessPage.jsx"));
+const PurchaseCancelPage = lazy(() => import("./pages/PurchaseCancelPage.jsx"));
+const ProductsPage = lazy(() => import("./pages/ProductPage.jsx"));
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { motion } from 'framer-motion'
-import { useCartStore } from '../stores/useCartStore';
+import { useCartStore } from '../stores/useCartStore.js';
 
 function GiftCouponCard() {
   const [userInputCode, setUserInputCode] = useState("");

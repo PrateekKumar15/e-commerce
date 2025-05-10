@@ -1,12 +1,11 @@
-import React from 'react'
-import { useCartStore } from '../stores/useCartStore'
+import { useCartStore } from '../stores/useCartStore.js';
 import { motion } from 'framer-motion'
 import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import CartItem from '../components/CartItem';
-import PeopleAlsoBought from '../components/PeopleAlsoBought';
-import OrderSummary from '../components/OrderSummary';
-import GiftCouponCard from '../components/GiftCouponCard';
+import CartItem from '../components/CartItem.jsx';
+import PeopleAlsoBought from '../components/PeopleAlsoBought.jsx';
+import OrderSummary from '../components/OrderSummary.jsx';
+import GiftCouponCard from '../components/GiftCouponCard.jsx';
 
 function CartPage() {
   const { cart } = useCartStore();

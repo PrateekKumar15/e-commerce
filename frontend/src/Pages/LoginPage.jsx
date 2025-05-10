@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, Lock, ArrowRight, Loader, LogIn } from 'lucide-react'
 import { motion } from "framer-motion"
-import { useUserStore } from '../stores/useUserStore'
+import { useUserStore } from '../stores/useUserStore.js'
 
 function LoginPage() {
   const [email, setEmail] = useState('')

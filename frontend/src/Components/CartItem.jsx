@@ -1,4 +1,4 @@
-import { useCartStore } from "../stores/useCartStore";
+import { useCartStore } from "../stores/useCartStore.js";
 import { Minus, Plus, Trash } from "lucide-react";
 
 function CartItem({ item }) {

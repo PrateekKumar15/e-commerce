@@ -1,11 +1,11 @@
 import  { useEffect } from "react";
-import CategoryItem from "../components/CategoryItem";
-import { useProductStore } from "../stores/useProductStore";
-import FeaturedProducts from "../components/FeaturedProducts";
+import CategoryItem from "../components/CategoryItem.jsx";
+import { useProductStore } from "../stores/useProductStore.js";
+import FeaturedProducts from "../components/FeaturedProducts.jsx";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShoppingBag } from "lucide-react";
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner.jsx";
 const categories = [
   { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
   { href: "/t-shirts", name: "T-shirts", imageUrl: "/tshirts.jpg" },

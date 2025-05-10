@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { motion } from "framer-motion";
 import { Upload, Loader, PlusCircle } from "lucide-react";
-import { useProductStore } from "../stores/useProductStore";
+import { useProductStore } from "../stores/useProductStore.js";
 import toast from "react-hot-toast";
 
 const categories = [

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Filter, Search, SlidersHorizontal, X } from "lucide-react";
-import ProductCard from "../components/ProductCard";
-import axios from "../lib/axios";
+import ProductCard from "../components/ProductCard.jsx";
+import axios from "../lib/axios.js";
 // import LoadingSpinner from "../components/LoadingSpinner";
 
 const ProductsPage = () => {

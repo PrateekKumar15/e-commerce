@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
-import axios from "../lib/axios";
-import LoadingSpinner from "./LoadingSpinner";
+import ProductCard from "./ProductCard.jsx";
+import axios from "../lib/axios.js";
+import LoadingSpinner from "./LoadingSpinner.jsx";
 
 function PeopleAlsoBought() {
   const [recommendations, setRecommendations] = useState([]);

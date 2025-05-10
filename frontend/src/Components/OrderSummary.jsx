@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { useCartStore } from "../stores/useCartStore";
+import { useCartStore } from "../stores/useCartStore.js";
 import { MoveRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-import axios from "../lib/axios";
+import axios from "../lib/axios.js";
 
 const stripePromise = loadStripe(
   "pk_test_51RMQsYDRVL6CeVZHPToQhWzXyhS3Fkc8tdrz972VHGsaLFV4r0rPlkGvion5hqHUKCXIQ9rtzeLjBWt8Om1RsjtY00TzLNgGM5"

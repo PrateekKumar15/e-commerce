@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { ChevronLeft, ShoppingCart, ChevronRight } from "lucide-react";
-import { useCartStore } from "../stores/useCartStore";
+import { useCartStore } from "../stores/useCartStore.js";
 
 function FeaturedProducts({ featuredProducts }) {
   const [currentIndex, setCurrentIndex] = useState(0);
