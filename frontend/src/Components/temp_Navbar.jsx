@@ -12,8 +12,8 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-import { useUserStore } from "../stores/useUserStore";
-import { useCartStore } from "../stores/useCartStore";
+import { useUserStore } from "../stores/useUserStore.js";
+import { useCartStore } from "../stores/useCartStore.js";
 import { Link, useNavigate } from "react-router-dom";
 import { toggleTheme, getInitialTheme } from "../lib/theme.js";
 import { motion } from "framer-motion";
@@ -240,7 +240,7 @@ function Navbar() {
             </button>
           ) : (
             <>
-                <Link to="/signup" className="flex items-center gap-2 py-2 dark:text-dark-foreground text-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}><UserPlus size={18} /> Sign Up</Link>
+              <Link to="/signup" className="flex items-center gap-2 py-2 dark:text-dark-foreground text-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}><UserPlus size={18} /> Sign Up</Link>
               <Link to="/login" className="flex items-center gap-2 py-2 text-dark-foreground/80 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}><LogIn size={18} /> Login</Link>
             </>
           )}
