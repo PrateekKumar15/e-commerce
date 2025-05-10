@@ -1,20 +1,21 @@
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
-import AdminPage from "./pages/AdminPage";
-import CategoryPage from "./pages/CategoryPage";
-import CartPage from "./pages/CartPage";
-import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
-import PurchaseCancelPage from "./pages/PurchaseCancelPage";
-import ProductsPage from "./pages/ProductPage";
-
 import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
 import { useUserStore } from "./stores/useUserStore";
 import { useCartStore } from "./stores/useCartStore";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react"; // Import lazy and Suspense
 import LoadingSpinner from "./components/LoadingSpinner";
+
+// Dynamically import pages
+const HomePage = lazy(() => import("./pages/HomePage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage"));
+const AdminPage = lazy(() => import("./pages/AdminPage"));
+const CategoryPage = lazy(() => import("./pages/CategoryPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
+const PurchaseSuccessPage = lazy(() => import("./pages/PurchaseSuccessPage"));
+const PurchaseCancelPage = lazy(() => import("./pages/PurchaseCancelPage"));
+const ProductsPage = lazy(() => import("./pages/ProductPage"));
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
@@ -45,37 +46,39 @@ function App() {
 
       <div className="relative z-0 pt-20"> {/* Adjusted z-index */}
         <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/signup"
-            element={!user ? <SignUpPage /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/login"
-            element={!user ? <LoginPage /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/secret-dashboard"
-            element={
-              user?.role === "admin" ? <AdminPage /> : <Navigate to="/login" />
-            }
-          />
-          <Route path="/category/:category" element={<CategoryPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route
-            path="/cart"
-            element={user ? <CartPage /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/purchase-success"
-            element={user ? <PurchaseSuccessPage /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/purchase-cancel"
-            element={user ? <PurchaseCancelPage /> : <Navigate to="/login" />}
-          />
-        </Routes>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/signup"
+              element={!user ? <SignUpPage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/login"
+              element={!user ? <LoginPage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/secret-dashboard"
+              element={
+                user?.role === "admin" ? <AdminPage /> : <Navigate to="/login" />
+              }
+            />
+            <Route path="/category/:category" element={<CategoryPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route
+              path="/cart"
+              element={user ? <CartPage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/purchase-success"
+              element={user ? <PurchaseSuccessPage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/purchase-cancel"
+              element={user ? <PurchaseCancelPage /> : <Navigate to="/login" />}
+            />
+          </Routes>
+        </Suspense>
       </div>
       <Toaster />
     </div>
